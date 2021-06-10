@@ -18,21 +18,28 @@ const Gameboard = () => {
   const gameMesEL = document.querySelector('#gameMessage');
   const newGameBtn = document.querySelector('#newGame button');
 
+  const newGame = () => {
+    gameplay = true;
+    markerCount = 0;
+    newGameMsg.textContent = '';
+    board = ['', '', '', '', '', '', '', '', ''];
+    pos0.textContent = '';
+    pos1.textContent = '';
+    pos2.textContent = '';
+    pos3.textContent = '';
+    pos4.textContent = '';
+    pos5.textContent = '';
+    pos6.textContent = '';
+    pos7.textContent = '';
+    pos8.textContent = '';
+    gameMesEL.children[0].textContent = '';
+    gameMesEL.children[1].textContent = '';
+  };
+
   const PlayerMarkerUpdate = () => {
-    if (
-      markerCount === 1 ||
-      markerCount === 3 ||
-      markerCount === 5 ||
-      markerCount === 7
-    ) {
+    if (markerCount === 1 || markerCount === 3 || markerCount === 5 || markerCount === 7) {
       return (playerMarker = 'O');
-    } else if (
-      markerCount === 0 ||
-      markerCount === 2 ||
-      markerCount === 4 ||
-      markerCount === 6 ||
-      markerCount === 8
-    );
+    } else if (markerCount === 0 || markerCount === 2 || markerCount === 4 || markerCount === 6 || markerCount === 8);
     {
       return (playerMarker = 'X');
     }
@@ -79,143 +86,29 @@ const Gameboard = () => {
     }
   };
 
-  const addGameMarker0 = () => {
-    if (pos0.textContent != '' || markerCount > 8 || gameplay != true) {
+  const addGameMarker = (x, y, z) => {
+    const pos = boardEl.children[x].children[y];
+    if (pos.textContent != '' || markerCount > 8 || gameplay != true) {
       return;
     }
     {
       PlayerMarkerUpdate();
-      pos0.textContent = playerMarker;
-      board[0] = playerMarker;
-      markerCount++;
-      checkWinner(board);
-    }
-  };
-  const addGameMarker1 = () => {
-    if (pos1.textContent != '' || markerCount > 8 || gameplay != true) {
-      return;
-    }
-    {
-      PlayerMarkerUpdate();
-      pos1.textContent = playerMarker;
-      board[1] = playerMarker;
-      markerCount++;
-      checkWinner(board);
-    }
-  };
-  const addGameMarker2 = () => {
-    if (pos2.textContent != '' || markerCount > 8 || gameplay != true) {
-      return;
-    }
-    {
-      PlayerMarkerUpdate();
-      pos2.textContent = playerMarker;
-      board[2] = playerMarker;
-      markerCount++;
-      checkWinner(board);
-    }
-  };
-  const addGameMarker3 = () => {
-    if (pos3.textContent != '' || markerCount > 8 || gameplay != true) {
-      return;
-    }
-    {
-      PlayerMarkerUpdate();
-      pos3.textContent = playerMarker;
-      board[3] = playerMarker;
+      pos.textContent = playerMarker;
+      board[z] = playerMarker;
       markerCount++;
       checkWinner(board);
     }
   };
 
-  const addGameMarker4 = () => {
-    if (pos4.textContent != '' || markerCount > 8 || gameplay != true) {
-      return;
-    }
-    {
-      PlayerMarkerUpdate();
-      pos4.textContent = playerMarker;
-      board[4] = playerMarker;
-      markerCount++;
-      checkWinner(board);
-    }
-  };
-  const addGameMarker5 = () => {
-    if (pos5.textContent != '' || markerCount > 8 || gameplay != true) {
-      return;
-    }
-    {
-      PlayerMarkerUpdate();
-      pos5.textContent = playerMarker;
-      board[5] = playerMarker;
-      markerCount++;
-      checkWinner(board);
-    }
-  };
-  const addGameMarker6 = () => {
-    if (pos6.textContent != '' || markerCount > 8 || gameplay != true) {
-      return;
-    }
-    {
-      PlayerMarkerUpdate();
-      pos6.textContent = playerMarker;
-      board[6] = playerMarker;
-      markerCount++;
-      checkWinner(board);
-    }
-  };
-  const addGameMarker7 = () => {
-    if (pos7.textContent != '' || markerCount > 8 || gameplay != true) {
-      return;
-    }
-    {
-      PlayerMarkerUpdate();
-      pos7.textContent = playerMarker;
-      board[7] = playerMarker;
-      markerCount++;
-      checkWinner(board);
-    }
-  };
-  const addGameMarker8 = () => {
-    if (pos8.textContent != '' || markerCount > 8 || gameplay != true) {
-      return;
-    }
-    {
-      PlayerMarkerUpdate();
-      pos8.textContent = playerMarker;
-      board[8] = playerMarker;
-      markerCount++;
-      checkWinner(board);
-    }
-  };
-
-  const newGame = () => {
-    gameplay = true;
-    markerCount = 0;
-    newGameMsg.textContent = '';
-    board = ['', '', '', '', '', '', '', '', ''];
-    pos0.textContent = '';
-    pos1.textContent = '';
-    pos2.textContent = '';
-    pos3.textContent = '';
-    pos4.textContent = '';
-    pos5.textContent = '';
-    pos6.textContent = '';
-    pos7.textContent = '';
-    pos8.textContent = '';
-    gameMesEL.children[0].textContent = '';
-    gameMesEL.children[1].textContent = '';
-  };
-
-  pos0.addEventListener('click', addGameMarker0);
-  pos1.addEventListener('click', addGameMarker1);
-  pos2.addEventListener('click', addGameMarker2);
-  pos3.addEventListener('click', addGameMarker3);
-  pos4.addEventListener('click', addGameMarker4);
-  pos5.addEventListener('click', addGameMarker5);
-  pos6.addEventListener('click', addGameMarker6);
-  pos7.addEventListener('click', addGameMarker7);
-  pos8.addEventListener('click', addGameMarker8);
+  pos0.addEventListener('click', (x, y, z) => addGameMarker(2, 0, 0));
+  pos1.addEventListener('click', (x, y, z) => addGameMarker(2, 1, 1));
+  pos2.addEventListener('click', (x, y, z) => addGameMarker(2, 2, 2));
+  pos3.addEventListener('click', (x, y, z) => addGameMarker(1, 0, 3));
+  pos4.addEventListener('click', (x, y, z) => addGameMarker(1, 1, 4));
+  pos5.addEventListener('click', (x, y, z) => addGameMarker(1, 2, 5));
+  pos6.addEventListener('click', (x, y, z) => addGameMarker(0, 0, 6));
+  pos7.addEventListener('click', (x, y, z) => addGameMarker(0, 1, 7));
+  pos8.addEventListener('click', (x, y, z) => addGameMarker(0, 2, 8));
 
   newGameBtn.addEventListener('click', newGame);
 };
